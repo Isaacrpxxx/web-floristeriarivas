@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floristería Rivas 🌹</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #0d0b0b;
+    --negro2: #1a1210;
+    --dorado: #c9a84c;
+    --dorado2: #e8c96a;
+    --dorado-claro: #f5e6b8;
+    --rojo: #b01a2e;
+    --rojo2: #d42038;
+    --crema: #fdf6e8;
+    --gris: #999;
+    --gris2: #555;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--negro);
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 80%, rgba(176,26,46,0.35) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 20% 20%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      linear-gradient(160deg, #0d0b0b 0%, #1e0a0e 55%, #0d0b0b 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* líneas decorativas tipo tarjeta */
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 10px;
+    background: linear-gradient(to bottom, var(--rojo), var(--rojo2), var(--rojo));
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 10px;
+    background: linear-gradient(to bottom, var(--rojo), var(--rojo2), var(--rojo));
+  }
+
+  .petals { position: absolute; inset: 0; pointer-events: none; }
+
+  .petal {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0.12;
+    animation: flotar linear infinite;
+  }
+
+  @keyframes flotar {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.12; }
+    90% { opacity: 0.08; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    opacity: 0.85;
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    height: 1px;
+    width: 40px;
+    background: var(--dorado);
+    opacity: 0.5;
+  }
+
+  .hero-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    font-style: italic;
+    color: var(--dorado2);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 15vw, 9rem);
+    font-style: italic;
+    font-weight: 700;
+    color: var(--dorado);
+    line-height: 0.9;
+    position: relative;
+    text-shadow: 0 0 60px rgba(201,168,76,0.3);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--dorado) 0%, var(--dorado2) 40%, var(--dorado-claro) 60%, var(--dorado) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-servicios {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-servicio-badge {
+    font-size: 0.75rem;
+    color: var(--dorado-claro);
+    opacity: 0.75;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    letter-spacing: 0.05em;
+  }
+
+  .divider-dorado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+    opacity: 0.5;
+  }
+
+  .divider-dorado span { font-size: 1rem; color: var(--dorado); }
+  .divider-dorado::before,
+  .divider-dorado::after {
+    content: '';
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(to right, transparent, var(--dorado));
+  }
+  .divider-dorado::after { background: linear-gradient(to left, transparent, var(--dorado)); }
+
+  .btn-hero {
+    background: linear-gradient(135deg, var(--rojo) 0%, var(--rojo2) 100%);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.9rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(176,26,46,0.4);
+  }
+
+  .btn-hero::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, var(--dorado), transparent 50%, var(--dorado));
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(176,26,46,0.55);
+  }
+
+  .scroll-hint {
+    color: rgba(255,255,255,0.2);
+    font-size: 0.75rem;
+    margin-top: 2.5rem;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 5rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    opacity: 0.8;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    content: '';
+    height: 1px;
+    width: 30px;
+    background: var(--dorado);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-style: italic;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title .dorado {
+    background: linear-gradient(135deg, var(--dorado), var(--dorado2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-sub {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .card {
+    background: #1a1210;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.3);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .card-img {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* faja roja izquierda en imagen, igual que la tarjeta */
+  .card-img::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: linear-gradient(to bottom, var(--rojo), var(--rojo2));
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(176,26,46,0.9);
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .card-body { padding: 1.1rem 1.35rem 0.6rem; }
+
+  .card-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--dorado2);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.02em;
+  }
+
+  .card-desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+  }
+
+  .precio-base {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dorado);
+  }
+
+  .precio-base span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    font-weight: 400;
+  }
+
+  /* ── PERSONALIZACIÓN ── */
+  .personalizacion {
+    background: rgba(0,0,0,0.35);
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 0.9rem 1.35rem 1rem;
+  }
+
+  .pers-titulo {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 0.8rem;
+    opacity: 0.8;
+  }
+
+  .pers-grupo { margin-bottom: 0.75rem; }
+  .pers-grupo:last-child { margin-bottom: 0; }
+
+  .pers-grupo-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.03em;
+  }
+
+  .pers-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .pers-opt { position: relative; }
+
+  .pers-opt input {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+
+  .pers-opt label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: 3px;
+    border: 1px solid rgba(201,168,76,0.2);
+    font-size: 0.74rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.6);
+    user-select: none;
+  }
+
+  .pers-opt label .xtra {
+    font-size: 0.64rem;
+    color: var(--dorado);
+    font-weight: 600;
+  }
+
+  .pers-opt input:checked + label {
+    background: rgba(176,26,46,0.7);
+    border-color: var(--rojo2);
+    color: #fff;
+  }
+
+  .pers-opt input:checked + label .xtra {
+    color: var(--dorado-claro);
+  }
+
+  .pers-opt label:hover {
+    border-color: rgba(201,168,76,0.5);
+    background: rgba(201,168,76,0.08);
+    color: #fff;
+  }
+
+  /* ── FOOTER TARJETA ── */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.35rem 1.25rem;
+    gap: 0.75rem;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .precio-final-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dorado);
+    line-height: 1;
+  }
+
+  .precio-final-label {
+    font-size: 0.63rem;
+    color: rgba(255,255,255,0.3);
+    margin-top: 0.15rem;
+  }
+
+  .btn-add {
+    background: linear-gradient(135deg, var(--rojo), var(--rojo2));
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 0.55rem 1.25rem;
+    font-size: 0.82rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    box-shadow: 0 3px 12px rgba(176,26,46,0.35);
+  }
+
+  .btn-add:hover {
+    background: linear-gradient(135deg, var(--rojo2), #e0253e);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(176,26,46,0.5);
+  }
+
+  .btn-add:active { transform: scale(0.97); }
+
+  /* ── CART FAB ── */
+  .cart-fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: linear-gradient(135deg, var(--rojo), var(--rojo2));
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.85rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 6px 25px rgba(176,26,46,0.5), 0 0 0 1px rgba(201,168,76,0.2);
+    transition: transform 0.2s;
+    z-index: 100;
+    display: none;
+    letter-spacing: 0.05em;
+  }
+
+  .cart-fab.visible { display: flex; }
+  .cart-fab:hover { transform: scale(1.04); }
+
+  .cart-count {
+    background: var(--dorado);
+    color: var(--negro);
+    border-radius: 50%;
+    width: 22px; height: 22px;
+    font-size: 0.73rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── MODAL ── */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 200;
+    backdrop-filter: blur(6px);
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .overlay.open { display: flex; }
+
+  .modal {
+    background: #1a1210;
+    border-radius: 12px 12px 0 0;
+    border-top: 1px solid rgba(201,168,76,0.25);
+    width: 100%;
+    max-width: 560px;
+    max-height: 88svh;
+    overflow-y: auto;
+    padding: 2rem 1.75rem 2.5rem;
+    animation: slideUp 0.35s cubic-bezier(.2,.8,.3,1);
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .modal-handle {
+    width: 40px; height: 3px;
+    background: rgba(201,168,76,0.3);
+    border-radius: 2px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .modal h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--dorado2);
+    margin-bottom: 0.3rem;
+  }
+
+  .modal-sub { color: rgba(255,255,255,0.4); font-size: 0.83rem; margin-bottom: 1.5rem; }
+
+  .cart-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .cart-item-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .cart-emoji { font-size: 2rem; }
+
+  .cart-info { flex: 1; }
+
+  .cart-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--dorado-claro);
+  }
+
+  .cart-extras { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-top: 0.15rem; }
+  .cart-precio-unit { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 0.1rem; }
+
+  .qty-ctrl { display: flex; align-items: center; gap: 0.5rem; }
+
+  .qty-btn {
+    width: 28px; height: 28px;
+    border-radius: 3px;
+    border: 1px solid rgba(201,168,76,0.35);
+    background: transparent;
+    color: var(--dorado);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+
+  .qty-btn:hover { background: rgba(201,168,76,0.12); }
+  .qty-num { font-weight: 600; min-width: 20px; text-align: center; color: #fff; }
+
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0 1.3rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    margin-top: 0.5rem;
+  }
+
+  .cart-total .amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dorado);
+  }
+
+  .form-group { margin-bottom: 1rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.93rem;
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: rgba(201,168,76,0.5);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .form-group textarea { height: 80px; resize: none; }
+
+  .btn-whatsapp {
+    width: 100%;
+    background: #25d366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .btn-whatsapp:hover { background: #1ebe5d; }
+  .btn-whatsapp:active { transform: scale(0.98); }
+
+  .whatsapp-note {
+    text-align: center;
+    font-size: 0.73rem;
+    color: rgba(255,255,255,0.3);
+    margin-top: 0.7rem;
+  }
+
+  .empty-cart { text-align: center; padding: 2rem 0; color: rgba(255,255,255,0.35); }
+  .empty-cart-emoji { font-size: 3rem; margin-bottom: 0.5rem; }
+
+  /* ── INFO STRIP ── */
+  .info-strip {
+    background: linear-gradient(135deg, var(--rojo) 0%, #8a1020 100%);
+    padding: 3.5rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .info-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(0,0,0,0.3) 0%, transparent 70%);
+  }
+
+  .info-strip h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-style: italic;
+    color: var(--dorado-claro);
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+
+  .info-strip p {
+    opacity: 0.75;
+    font-size: 0.9rem;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    position: relative;
+  }
+
+  .info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .info-card {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+    min-width: 155px;
+    flex: 1;
+  }
+
+  .info-card-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+  .info-card-label { font-size: 0.7rem; opacity: 0.65; margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .info-card-val { font-weight: 600; font-size: 0.9rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #000;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .footer-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--dorado);
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-sub {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-tel {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.5rem;
+  }
+
+  .footer-tel a {
+    color: var(--dorado);
+    text-decoration: none;
+  }
+
+  /* Card image backgrounds */
+  .bg-red    { background: linear-gradient(135deg, #2d0a0f, #1a0508); }
+  .bg-pink   { background: linear-gradient(135deg, #2a0d1a, #1a0810); }
+  .bg-white  { background: linear-gradient(135deg, #1e1a14, #2a2418); }
+  .bg-orange { background: linear-gradient(135deg, #2a1800, #1a1000); }
+  .bg-purple { background: linear-gradient(135deg, #1a0d2a, #120818); }
+  .bg-mix    { background: linear-gradient(135deg, #2a1020, #1a0a14); }
+
+  /* ── RAMO PERSONALIZADO ── */
+  .custom-section {
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      linear-gradient(180deg, #0d0b0b 0%, #130d08 100%);
+    padding: 5rem 1.5rem;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .custom-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .custom-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Preview */
+  .custom-preview {
+    position: sticky;
+    top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .preview-box {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: radial-gradient(ellipse at 50% 80%, rgba(176,26,46,0.25), #1a1210);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preview-box::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(to bottom, var(--rojo), var(--rojo2));
+    border-radius: 12px 0 0 12px;
+  }
+
+  .preview-emoji {
+    font-size: 5rem;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.3));
+  }
+
+  .preview-type-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--dorado);
+    opacity: 0.8;
+  }
+
+  .preview-precio-wrap { text-align: center; }
+
+  .preview-precio-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.3rem;
+  }
+
+  .preview-precio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dorado);
+    line-height: 1;
+    transition: all 0.2s ease;
+  }
+
+  .preview-precio-sub {
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.25);
+    margin-top: 0.2rem;
+  }
+
+  .btn-custom-add {
+    width: 100%;
+    background: linear-gradient(135deg, var(--rojo), var(--rojo2));
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.9rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 18px rgba(176,26,46,0.4);
+  }
+
+  .btn-custom-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(176,26,46,0.55);
+  }
+
+  /* Steps */
+  .custom-step {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1.75rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .custom-step:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .custom-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    color: var(--dorado);
+    opacity: 0.2;
+    line-height: 1;
+    min-width: 42px;
+    padding-top: 0.1rem;
+  }
+
+  .custom-step-body { flex: 1; }
+
+  .custom-step-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.85rem;
+  }
+
+  .custom-opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Opción radio (tipo, color, cantidad, papel) */
+  .copt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 6px;
+    border: 1px solid rgba(201,168,76,0.15);
+    background: rgba(255,255,255,0.03);
+    cursor: pointer;
+    transition: all 0.18s;
+    min-width: 62px;
+    text-align: center;
+    user-select: none;
+  }
+
+  .copt:hover {
+    border-color: rgba(201,168,76,0.4);
+    background: rgba(201,168,76,0.06);
+  }
+
+  .copt.selected {
+    background: rgba(176,26,46,0.55);
+    border-color: var(--rojo2);
+    box-shadow: 0 0 12px rgba(176,26,46,0.3);
+  }
+
+  .copt .copt-emoji {
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+
+  .copt .copt-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+  }
+
+  .copt .copt-extra {
+    font-size: 0.62rem;
+    color: var(--dorado);
+    font-weight: 700;
+  }
+
+  .copt.selected .copt-extra {
+    color: var(--dorado-claro);
+  }
+
+  /* Opción checkbox (adornos) */
+  .copt-check {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 6px;
+    border: 1px solid rgba(201,168,76,0.15);
+    background: rgba(255,255,255,0.03);
+    cursor: pointer;
+    transition: all 0.18s;
+    min-width: 72px;
+    text-align: center;
+    user-select: none;
+  }
+
+  .copt-check:hover {
+    border-color: rgba(201,168,76,0.4);
+    background: rgba(201,168,76,0.06);
+  }
+
+  .copt-check.activo {
+    background: rgba(201,168,76,0.18);
+    border-color: var(--dorado);
+    box-shadow: 0 0 12px rgba(201,168,76,0.15);
+  }
+
+  .copt-check .copt-emoji { font-size: 1.4rem; line-height: 1.2; }
+  .copt-check .copt-label { font-size: 0.72rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+  .copt-check .copt-extra { font-size: 0.62rem; color: var(--dorado); font-weight: 700; }
+
+  @media (max-width: 750px) {
+    .custom-layout {
+      grid-template-columns: 1fr;
+    }
+    .custom-preview {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .preview-box {
+      width: 160px;
+      aspect-ratio: 1;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .grid { grid-template-columns: 1fr; }
+    .modal { padding: 1.5rem 1.25rem 2rem; }
+    .hero::before, .hero::after { width: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="petals" id="petals"></div>
+
+  <div class="hero-eyebrow">Tijuana, B.C.</div>
+  <div class="hero-logo">Floristería</div>
+  <h1>Rivas</h1>
+
+  <div class="divider-dorado"><span>🌹</span></div>
+
+  <div class="hero-servicios">
+    <div class="hero-servicio-badge">🌹 Ramos en Bouquet</div>
+    <div class="hero-servicio-badge">🏍️ Servicio a Domicilio</div>
+    <div class="hero-servicio-badge">📅 Entrega el mismo día</div>
+  </div>
+
+  <button class="btn-hero" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">
+    Ver Catálogo
+  </button>
+
+  <p class="scroll-hint" style="margin-top:3rem">▼</p>
+</section>
+
+<!-- CATALOGO -->
+<div class="section" id="catalogo">
+  <div class="section-header">
+    <div class="section-eyebrow">Nuestros arreglos</div>
+    <h2 class="section-title">Ramos <span class="dorado">Especiales</span></h2>
+    <p class="section-sub">Frescos, artesanales y con todo el cariño · Personaliza el tuyo abajo 🎀</p>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<!-- RAMO PERSONALIZADO -->
+<div class="custom-section" id="personalizado">
+  <div class="custom-inner">
+    <div class="section-header" style="margin-bottom:2.5rem">
+      <div class="section-eyebrow">Diseña el tuyo</div>
+      <h2 class="section-title">Ramo <span class="dorado">a tu Gusto</span></h2>
+      <p class="section-sub">Elige cada detalle — nosotros lo hacemos realidad ✨</p>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="custom-layout">
+      <div class="custom-preview">
+        <div class="preview-box" id="previewBox">
+          <div class="preview-emoji" id="previewEmoji">🌹</div>
+          <div class="preview-type-label" id="previewTypeLabel">Ramo</div>
+        </div>
+        <div class="preview-precio-wrap">
+          <div class="preview-precio-label">Precio estimado</div>
+          <div class="preview-precio" id="previewPrecio">$280 MXN</div>
+          <div class="preview-precio-sub">varía según selección</div>
+        </div>
+        <button class="btn-custom-add" onclick="agregarPersonalizado()">
+          🌹 Agregar al pedido
+        </button>
+      </div>
+
+      <div class="custom-form">
+
+        <!-- PASO 1: TIPO -->
+        <div class="custom-step">
+          <div class="custom-step-num">01</div>
+          <div class="custom-step-body">
+            <div class="custom-step-title">Tipo de arreglo</div>
+            <div class="custom-opts" id="opts-tipo">
+              <div class="copt selected" data-group="tipo" data-val="ramo" data-emoji="🌹" data-label="Ramo" data-precio="0" onclick="elegir(this,'tipo')">
+                <span class="copt-emoji">🌹</span>
+                <span class="copt-label">Ramo</span>
+                <span class="copt-extra">base</span>
+              </div>
+              <div class="copt" data-group="tipo" data-val="caja" data-emoji="🎁" data-label="Caja" data-precio="80" onclick="elegir(this,'tipo')">
+                <span class="copt-emoji">🎁</span>
+                <span class="copt-label">Caja</span>
+                <span class="copt-extra">+$80</span>
+              </div>
+              <div class="copt" data-group="tipo" data-val="canasta" data-emoji="🧺" data-label="Canasta" data-precio="60" onclick="elegir(this,'tipo')">
+                <span class="copt-emoji">🧺</span>
+                <span class="copt-label">Canasta</span>
+                <span class="copt-extra">+$60</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 2: COLOR ROSAS -->
+        <div class="custom-step">
+          <div class="custom-step-num">02</div>
+          <div class="custom-step-body">
+            <div class="custom-step-title">Color de las rosas</div>
+            <div class="custom-opts" id="opts-color">
+              <div class="copt selected" data-group="color" data-val="rojas" data-emoji="🌹" data-label="Rojas" data-precio="0" onclick="elegir(this,'color')">
+                <span class="copt-emoji">🌹</span>
+                <span class="copt-label">Rojas</span>
+                <span class="copt-extra">base</span>
+              </div>
+              <div class="copt" data-group="color" data-val="rosas" data-emoji="🌸" data-label="Rosas" data-precio="0" onclick="elegir(this,'color')">
+                <span class="copt-emoji">🌸</span>
+                <span class="copt-label">Rosas</span>
+                <span class="copt-extra">base</span>
+              </div>
+              <div class="copt" data-group="color" data-val="blancas" data-emoji="🤍" data-label="Blancas" data-precio="0" onclick="elegir(this,'color')">
+                <span class="copt-emoji">🤍</span>
+                <span class="copt-label">Blancas</span>
+                <span class="copt-extra">base</span>
+              </div>
+              <div class="copt" data-group="color" data-val="moradas" data-emoji="💜" data-label="Moradas" data-precio="20" onclick="elegir(this,'color')">
+                <span class="copt-emoji">💜</span>
+                <span class="copt-label">Moradas</span>
+                <span class="copt-extra">+$20</span>
+              </div>
+              <div class="copt" data-group="color" data-val="amarillas" data-emoji="💛" data-label="Amarillas" data-precio="0" onclick="elegir(this,'color')">
+                <span class="copt-emoji">💛</span>
+                <span class="copt-label">Amarillas</span>
+                <span class="copt-extra">base</span>
+              </div>
+              <div class="copt" data-group="color" data-val="coral" data-emoji="🧡" data-label="Coral" data-precio="10" onclick="elegir(this,'color')">
+                <span class="copt-emoji">🧡</span>
+                <span class="copt-label">Coral</span>
+                <span class="copt-extra">+$10</span>
+              </div>
+              <div class="copt" data-group="color" data-val="mixtas" data-emoji="💐" data-label="Mixtas" data-precio="30" onclick="elegir(this,'color')">
+                <span class="copt-emoji">💐</span>
+                <span class="copt-label">Mixtas</span>
+                <span class="copt-extra">+$30</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 3: CANTIDAD -->
+        <div class="custom-step">
+          <div class="custom-step-num">03</div>
+          <div class="custom-step-body">
+            <div class="custom-step-title">Cantidad de rosas</div>
+            <div class="custom-opts" id="opts-cantidad">
+              <div class="copt" data-group="cantidad" data-val="6" data-label="6 rosas" data-precio="-100" onclick="elegir(this,'cantidad')">
+                <span class="copt-emoji">6</span>
+                <span class="copt-label">rosas</span>
+                <span class="copt-extra">-$100</span>
+              </div>
+              <div class="copt selected" data-group="cantidad" data-val="12" data-label="12 rosas" data-precio="0" onclick="elegir(this,'cantidad')">
+                <span class="copt-emoji">12</span>
+                <span class="copt-label">rosas</span>
+                <span class="copt-extra">base</span>
+              </div>
+              <div class="copt" data-group="cantidad" data-val="15" data-label="15 rosas" data-precio="60" onclick="elegir(this,'cantidad')">
+                <span class="copt-emoji">15</span>
+                <span class="copt-label">rosas</span>
+                <span class="copt-extra">+$60</span>
+              </div>
+              <div class="copt" data-group="cantidad" data-val="24" data-label="24 rosas" data-precio="180" onclick="elegir(this,'cantidad')">
+                <span class="copt-emoji">24</span>
+                <span class="copt-label">rosas</span>
+                <span class="copt-extra">+$180</span>
+              </div>
+              <div class="copt" data-group="cantidad" data-val="30" data-label="30 rosas" data-precio="280" onclick="elegir(this,'cantidad')">
+                <span class="copt-emoji">30</span>
+                <span class="copt-label">rosas</span>
+                <span class="copt-extra">+$280</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 4: PAPEL -->
+        <div class="custom-step">
+          <div class="custom-step-num">04</div>
+          <div class="custom-step-body">
+            <div class="custom-step-title">Color y tipo de papel</div>
+            <div class="custom-opts" id="opts-papel">
+              <div class="copt selected" data-group="papel" data-val="kraft" data-label="Kraft café" data-precio="0" onclick="elegir(this,'papel')">
+                <span class="copt-emoji">📦</span>
+                <span class="copt-label">Kraft</span>
+                <span class="copt-extra">gratis</span>
+              </div>
+              <div class="copt" data-group="papel" data-val="celoFan" data-label="Celofán" data-precio="15" onclick="elegir(this,'papel')">
+                <span class="copt-emoji">✨</span>
+                <span class="copt-label">Celofán</span>
+                <span class="copt-extra">+$15</span>
+              </div>
+              <div class="copt" data-group="papel" data-val="seda" data-label="Papel seda" data-precio="25" onclick="elegir(this,'papel')">
+                <span class="copt-emoji">🎀</span>
+                <span class="copt-label">Seda</span>
+                <span class="copt-extra">+$25</span>
+              </div>
+              <div class="copt" data-group="papel" data-val="burbuja" data-label="Burbuja lujoso" data-precio="40" onclick="elegir(this,'papel')">
+                <span class="copt-emoji">👑</span>
+                <span class="copt-label">Burbuja</span>
+                <span class="copt-extra">+$40</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 5: ADORNOS -->
+        <div class="custom-step">
+          <div class="custom-step-num">05</div>
+          <div class="custom-step-body">
+            <div class="custom-step-title">Adornos extras <span style="font-size:0.72rem;opacity:0.5;font-weight:400">(varios)</span></div>
+            <div class="custom-opts" id="opts-adornos">
+              <div class="copt-check" data-val="lisTela" data-label="Listón de tela" data-precio="10" onclick="toggleAdorno(this)">
+                <span class="copt-emoji">🎗️</span>
+                <span class="copt-label">Listón tela</span>
+                <span class="copt-extra">+$10</span>
+              </div>
+              <div class="copt-check" data-val="organza" data-label="Listón de organza" data-precio="20" onclick="toggleAdorno(this)">
+                <span class="copt-emoji">🌸</span>
+                <span class="copt-label">Organza</span>
+                <span class="copt-extra">+$20</span>
+              </div>
+              <div class="copt-check" data-val="perlas" data-label="Perlas" data-precio="30" onclick="toggleAdorno(this)">
+                <span class="copt-emoji">💎</span>
+                <span class="copt-label">Perlas</span>
+                <span class="copt-extra">+$30</span>
+              </div>
+              <div class="copt-check" data-val="tarjeta" data-label="Tarjeta de mensaje" data-precio="20" onclick="toggleAdorno(this)">
+                <span class="copt-emoji">💌</span>
+                <span class="copt-label">Tarjeta</span>
+                <span class="copt-extra">+$20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /custom-form -->
+    </div><!-- /custom-layout -->
+  </div>
+</div>
+
+<!-- INFO -->
+<div class="info-strip">
+  <h2>¿Cómo ordenar? 🌸</h2>
+  <p>Elige tu ramo, escoge el papel y adornos, llena tus datos y manda el pedido directo a WhatsApp.</p>
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-card-icon">🌹</div>
+      <div class="info-card-label">Elige</div>
+      <div class="info-card-val">Tu ramo y estilo</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">📲</div>
+      <div class="info-card-label">Confirma</div>
+      <div class="info-card-val">Por WhatsApp</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">🏍️</div>
+      <div class="info-card-label">Entrega</div>
+      <div class="info-card-val">Mismo día en Tijuana</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">💳</div>
+      <div class="info-card-label">Pagas</div>
+      <div class="info-card-val">Efectivo o transferencia</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-nombre">Floristería Rivas</div>
+  <div class="footer-sub">Ramos en Bouquet · Servicio a Domicilio · Tijuana, B.C.</div>
+  <div class="footer-tel">📞 <a href="tel:6676919357">667 691 93 57</a></div>
+</footer>
+
+<!-- FAB -->
+<button class="cart-fab" id="cartFab" onclick="openCart()">
+  🛒 Ver pedido <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-handle"></div>
+    <h2>Tu pedido 🌹</h2>
+    <p class="modal-sub" id="modalSub">Revisa lo que elegiste y manda tu pedido por WhatsApp.</p>
+    <div id="cartItems"></div>
+    <div id="cartTotal" class="cart-total" style="display:none">
+      <span>Total estimado</span>
+      <span class="amount" id="totalAmt"></span>
+    </div>
+    <div id="orderForm" style="display:none">
+      <div class="form-group">
+        <label>Tu nombre *</label>
+        <input type="text" id="clientName" placeholder="Ej: María García">
+      </div>
+      <div class="form-group">
+        <label>Tu teléfono *</label>
+        <input type="tel" id="clientPhone" placeholder="Ej: 664 123 4567">
+      </div>
+      <div class="form-group">
+        <label>¿Dirección de entrega? (colonia o calle)</label>
+        <input type="text" id="clientAddr" placeholder="Ej: Col. Chapultepec, Tijuana">
+      </div>
+      <div class="form-group">
+        <label>¿Para quién es? (opcional)</label>
+        <input type="text" id="clientFor" placeholder="Ej: Para mi mamá ❤️">
+      </div>
+      <div class="form-group">
+        <label>Mensaje para el ramo (opcional)</label>
+        <textarea id="clientMsg" placeholder="Ej: Feliz cumpleaños, te quiero mucho"></textarea>
+      </div>
+      <button class="btn-whatsapp" onclick="sendWhatsApp()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Mandar pedido por WhatsApp
+      </button>
+      <p class="whatsapp-note">Te contactamos para confirmar y coordinar la entrega 🌹</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════
+// Número de WhatsApp de Floristería Rivas
+// 52 = México, luego el número sin espacios
+const WHATSAPP_NUMBER = '526676919357';
+// ═══════════════════════════════════
+
+const opcionesPapel = [
+  { id:'kraft',   emoji:'📦', label:'Kraft',          extra:0  },
+  { id:'celoFan', emoji:'✨', label:'Celofán',         extra:15 },
+  { id:'seda',    emoji:'🎀', label:'Papel seda',      extra:25 },
+  { id:'burbuja', emoji:'👑', label:'Burbuja lujoso',  extra:40 },
+];
+
+const opcionesAdornos = [
+  { id:'lisTela', emoji:'🎗️', label:'Listón de tela',   extra:10 },
+  { id:'organza', emoji:'🌸', label:'Listón de organza',extra:20 },
+  { id:'perlas',  emoji:'💎', label:'Perlas',            extra:30 },
+  { id:'tarjeta', emoji:'💌', label:'Tarjeta',           extra:20 },
+];
+
+const productos = [
+  { id:1, nombre:'Ramo Clásico Rojo',     desc:'12 rosas rojas de tallo largo. El favorito de siempre.',                   precio:280, emoji:'🌹', bg:'bg-red',    badge:'⭐ El más pedido' },
+  { id:2, nombre:'Ramo Romántico Rosa',   desc:'15 rosas rosas con gypsophila (nubes). Perfecto para decir te quiero.',     precio:320, emoji:'🌸', bg:'bg-pink',   badge:null },
+  { id:3, nombre:'Ramo Blanco Elegante',  desc:'12 rosas blancas con detalles verdes. Ideal para bodas o 15 años.',        precio:350, emoji:'🤍', bg:'bg-white',  badge:'Bodas & 15 años' },
+  { id:4, nombre:'Ramo Tropical Mix',     desc:'Rosas rojas, rosas y amarillas con follaje. Un arcoíris de colores.',       precio:390, emoji:'💐', bg:'bg-mix',    badge:null },
+  { id:5, nombre:'Ramo Morado & Lavanda', desc:'Rosas moradas y lavanda con eucalipto. Sofisticado y diferente.',           precio:420, emoji:'💜', bg:'bg-purple', badge:'Especial' },
+  { id:6, nombre:'Mini Ramo de Corazón',  desc:'6 rosas rojas en forma de corazón. Pequeño y muy bonito para regalar.',    precio:180, emoji:'❤️', bg:'bg-red',    badge:null },
+  { id:7, nombre:'Ramo XXL Sorpresa',     desc:'30 rosas mixtas en caja elegante. Para cuando quieres impresionar.',       precio:750, emoji:'🎁', bg:'bg-orange', badge:'🔥 El más grande' },
+  { id:8, nombre:'Bouquet Naranja & Coral',desc:'12 rosas coral con hojas secas. Estilo boho para mamá o amiga.',          precio:340, emoji:'🧡', bg:'bg-orange', badge:null },
+];
+
+let cart = {};
+let cartKeyCounter = 0;
+
+function renderGrid() {
+  const g = document.getElementById('grid');
+  g.innerHTML = productos.map(p => {
+    const papelHTML = opcionesPapel.map(op => `
+      <div class="pers-opt">
+        <input type="radio" name="papel_${p.id}" id="p_${p.id}_${op.id}" value="${op.id}" ${op.id==='kraft'?'checked':''} onchange="actualizarPrecio(${p.id})">
+        <label for="p_${p.id}_${op.id}">${op.emoji} ${op.label} <span class="xtra">${op.extra>0?'+$'+op.extra:'gratis'}</span></label>
+      </div>`).join('');
+
+    const adornosHTML = opcionesAdornos.map(op => `
+      <div class="pers-opt">
+        <input type="checkbox" id="a_${p.id}_${op.id}" value="${op.id}" onchange="actualizarPrecio(${p.id})">
+        <label for="a_${p.id}_${op.id}">${op.emoji} ${op.label} <span class="xtra">+$${op.extra}</span></label>
+      </div>`).join('');
+
+    return `
+    <div class="card">
+      <div class="card-img ${p.bg}">
+        <span>${p.emoji}</span>
+        ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-nombre">${p.nombre}</div>
+        <div class="card-desc">${p.desc}</div>
+        <div class="precio-base">$${p.precio} <span>MXN base</span></div>
+      </div>
+      <div class="personalizacion">
+        <div class="pers-titulo">✦ Personaliza tu ramo</div>
+        <div class="pers-grupo">
+          <div class="pers-grupo-label">📦 Tipo de papel</div>
+          <div class="pers-opciones">${papelHTML}</div>
+        </div>
+        <div class="pers-grupo">
+          <div class="pers-grupo-label">🎀 Adornos extras (varios)</div>
+          <div class="pers-opciones">${adornosHTML}</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="precio-final-num" id="pf_${p.id}">$${p.precio} MXN</div>
+          <div class="precio-final-label">precio con personalización</div>
+        </div>
+        <button class="btn-add" id="btn_${p.id}" onclick="addToCart(${p.id})">+ Agregar</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function getSeleccion(pid) {
+  const papelEl = document.querySelector(`input[name="papel_${pid}"]:checked`);
+  const papel = papelEl ? opcionesPapel.find(o => o.id === papelEl.value) : opcionesPapel[0];
+  const adornos = opcionesAdornos.filter(op => {
+    const el = document.getElementById(`a_${pid}_${op.id}`);
+    return el && el.checked;
+  });
+  const extraTotal = papel.extra + adornos.reduce((s,a) => s + a.extra, 0);
+  return { papel, adornos, extraTotal };
+}
+
+function actualizarPrecio(pid) {
+  const p = productos.find(x => x.id === pid);
+  const { extraTotal } = getSeleccion(pid);
+  const el = document.getElementById(`pf_${pid}`);
+  if (el) el.textContent = `$${p.precio + extraTotal} MXN`;
+}
+
+function addToCart(pid) {
+  const p = productos.find(x => x.id === pid);
+  const { papel, adornos, extraTotal } = getSeleccion(pid);
+  const configKey = `${pid}_${papel.id}_${adornos.map(a=>a.id).sort().join('-')}`;
+  const found = Object.keys(cart).find(k => cart[k].configKey === configKey);
+  if (found) {
+    cart[found].qty++;
+  } else {
+    const key = `item_${++cartKeyCounter}`;
+    cart[key] = { key, configKey, productoId:pid, nombre:p.nombre, emoji:p.emoji,
+      precioBase:p.precio, papel, adornos, extraTotal, qty:1 };
+  }
+  updateFab();
+  const btn = document.getElementById(`btn_${pid}`);
+  if (btn) {
+    btn.textContent = '✓ ¡Agregado!';
+    setTimeout(() => btn.textContent = '+ Agregar', 1500);
+  }
+}
+
+function updateFab() {
+  const total = Object.values(cart).reduce((a,b) => a + b.qty, 0);
+  document.getElementById('cartCount').textContent = total;
+  document.getElementById('cartFab').classList.toggle('visible', total > 0);
+}
+
+function openCart() {
+  document.getElementById('overlay').classList.add('open');
+  renderCart();
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('overlay'))
+    document.getElementById('overlay').classList.remove('open');
+}
+
+function renderCart() {
+  const keys = Object.keys(cart);
+  const itemsEl = document.getElementById('cartItems');
+  const totalEl = document.getElementById('cartTotal');
+  const formEl  = document.getElementById('orderForm');
+  const subEl   = document.getElementById('modalSub');
+
+  if (!keys.length) {
+    itemsEl.innerHTML = `<div class="empty-cart"><div class="empty-cart-emoji">🛒</div><p>Tu carrito está vacío.<br>Elige algún ramo del catálogo.</p></div>`;
+    totalEl.style.display = 'none';
+    formEl.style.display  = 'none';
+    subEl.textContent = 'Todavía no has agregado nada.';
+    return;
+  }
+
+  subEl.textContent = 'Revisa lo que elegiste y manda tu pedido por WhatsApp.';
+
+  let total = 0;
+  itemsEl.innerHTML = keys.map(k => {
+    const item = cart[k];
+    const unit = item.precioBase + item.extraTotal;
+    const sub  = unit * item.qty;
+    total += sub;
+    const extras = [];
+    if (item.papel.extra > 0) extras.push(`${item.papel.emoji} ${item.papel.label}`);
+    item.adornos.forEach(a => extras.push(`${a.emoji} ${a.label}`));
+    return `
+    <div class="cart-item">
+      <div class="cart-item-row">
+        <div class="cart-emoji">${item.emoji}</div>
+        <div class="cart-info">
+          <div class="cart-nombre">${item.nombre}</div>
+          ${extras.length ? `<div class="cart-extras">${extras.join(' · ')}</div>` : ''}
+          <div class="cart-precio-unit">$${unit} c/u · subtotal <strong style="color:var(--dorado)">$${sub}</strong></div>
+        </div>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty('${k}',-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${k}',1)">+</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('totalAmt').textContent = `$${total} MXN`;
+  totalEl.style.display = 'flex';
+  formEl.style.display  = 'block';
+}
+
+function changeQty(key, delta) {
+  cart[key].qty = Math.max(0, cart[key].qty + delta);
+  if (cart[key].qty === 0) delete cart[key];
+  updateFab();
+  renderCart();
+}
+
+function sendWhatsApp() {
+  const name  = document.getElementById('clientName').value.trim();
+  const phone = document.getElementById('clientPhone').value.trim();
+  const addr  = document.getElementById('clientAddr').value.trim();
+  const forWho= document.getElementById('clientFor').value.trim();
+  const msg   = document.getElementById('clientMsg').value.trim();
+
+  if (!name) { alert('Por favor escribe tu nombre 😊'); return; }
+
+  const keys = Object.keys(cart);
+  if (!keys.length) return;
+
+  let txt = `🌹 *NUEVO PEDIDO – Floristería Rivas*\n\n`;
+  txt += `👤 *Cliente:* ${name}\n`;
+  if (phone)  txt += `📱 *Teléfono:* ${phone}\n`;
+  if (addr)   txt += `📍 *Dirección:* ${addr}\n`;
+  if (forWho) txt += `💝 *Para:* ${forWho}\n`;
+  txt += `\n🛒 *Productos:*\n`;
+
+  let total = 0;
+  keys.forEach(k => {
+    const item = cart[k];
+    const unit = item.precioBase + item.extraTotal;
+    const sub  = unit * item.qty;
+    total += sub;
+    txt += `\n  ${item.emoji} *${item.nombre}* × ${item.qty}\n`;
+
+    if (item.esPersonalizado && item.detalles) {
+      const d = item.detalles;
+      txt += `     🎨 Tipo: ${d.tipo}\n`;
+      txt += `     🌹 Color: ${d.color}\n`;
+      txt += `     🔢 Cantidad: ${d.cantidad}\n`;
+      txt += `     📦 Papel: ${d.papel}\n`;
+      if (d.adornos && d.adornos.length)
+        txt += `     🎀 Adornos: ${d.adornos.map(a=>a.label).join(', ')}\n`;
+    } else {
+      txt += `     📦 Papel: ${item.papel.emoji} ${item.papel.label}${item.papel.extra > 0 ? ' (+$'+item.papel.extra+')' : ' (incluido)'}\n`;
+      if (item.adornos.length)
+        txt += `     🎀 Adornos: ${item.adornos.map(a=>`${a.emoji} ${a.label} (+$${a.extra})`).join(', ')}\n`;
+    }
+
+    txt += `     💰 $${unit} c/u = *$${sub} MXN*\n`;
+  });
+
+  txt += `\n✅ *TOTAL: $${total} MXN*`;
+  if (msg) txt += `\n\n💬 *Mensaje para el ramo:* "${msg}"`;
+  txt += `\n\n_Pedido desde la página web de Floristería Rivas_ 🌹`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(txt)}`, '_blank');
+}
+
+function createPetals() {
+  const c = document.getElementById('petals');
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement('span');
+    el.className = 'petal';
+    el.textContent = ['🌹','🌸','🌺','🥀'][Math.floor(Math.random()*4)];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.animationDuration = (10 + Math.random() * 12) + 's';
+    el.style.animationDelay = (Math.random() * 15) + 's';
+    el.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+    c.appendChild(el);
+  }
+}
+
+// ── CONSTRUCTOR DE RAMO PERSONALIZADO ────────────
+const PRECIO_BASE_CUSTOM = 280;
+
+const seleccionCustom = {
+  tipo:     { val:'ramo',    label:'Ramo',    emoji:'🌹', precio:0   },
+  color:    { val:'rojas',   label:'Rojas',   emoji:'🌹', precio:0   },
+  cantidad: { val:'12',      label:'12 rosas',            precio:0   },
+  papel:    { val:'kraft',   label:'Kraft',               precio:0   },
+  adornos:  [],
+};
+
+const colorEmojis = {
+  rojas:'🌹', rosas:'🌸', blancas:'🤍', moradas:'💜',
+  amarillas:'💛', coral:'🧡', mixtas:'💐',
+};
+
+const tipoEmojis = {
+  ramo:'🌹', caja:'🎁', canasta:'🧺',
+};
+
+function elegir(el, grupo) {
+  // Quitar selected del grupo
+  document.querySelectorAll(`#opts-${grupo} .copt`).forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+
+  seleccionCustom[grupo] = {
+    val:    el.dataset.val,
+    label:  el.dataset.label || el.dataset.val,
+    emoji:  el.dataset.emoji || '',
+    precio: parseInt(el.dataset.precio) || 0,
+  };
+
+  actualizarPreview();
+}
+
+function toggleAdorno(el) {
+  el.classList.toggle('activo');
+  const val   = el.dataset.val;
+  const label = el.dataset.label;
+  const precio = parseInt(el.dataset.precio) || 0;
+
+  if (el.classList.contains('activo')) {
+    seleccionCustom.adornos.push({ val, label, precio });
+  } else {
+    seleccionCustom.adornos = seleccionCustom.adornos.filter(a => a.val !== val);
+  }
+
+  actualizarPreview();
+}
+
+function calcularPrecioCustom() {
+  const extras =
+    seleccionCustom.tipo.precio +
+    seleccionCustom.color.precio +
+    seleccionCustom.cantidad.precio +
+    seleccionCustom.papel.precio +
+    seleccionCustom.adornos.reduce((s, a) => s + a.precio, 0);
+  return Math.max(180, PRECIO_BASE_CUSTOM + extras);
+}
+
+function actualizarPreview() {
+  // Emoji: si es caja/canasta usar ese emoji, si es ramo usar el del color
+  const tipoVal  = seleccionCustom.tipo.val;
+  const colorVal = seleccionCustom.color.val;
+  const emoji = tipoVal === 'ramo'
+    ? (colorEmojis[colorVal] || '🌹')
+    : (tipoEmojis[tipoVal] || '🎁');
+
+  document.getElementById('previewEmoji').textContent = emoji;
+  document.getElementById('previewTypeLabel').textContent =
+    seleccionCustom.tipo.label + ' · ' + seleccionCustom.color.label;
+  document.getElementById('previewPrecio').textContent =
+    `$${calcularPrecioCustom()} MXN`;
+}
+
+function agregarPersonalizado() {
+  const precio = calcularPrecioCustom();
+  const tipoVal = seleccionCustom.tipo.val;
+  const colorVal = seleccionCustom.color.val;
+  const emoji = tipoVal === 'ramo'
+    ? (colorEmojis[colorVal] || '🌹')
+    : (tipoEmojis[tipoVal] || '🎁');
+
+  const nombre = `${seleccionCustom.tipo.label} personalizado · ${seleccionCustom.color.label} · ${seleccionCustom.cantidad.label}`;
+
+  const detalles = {
+    tipo:     seleccionCustom.tipo.label,
+    color:    seleccionCustom.color.label,
+    cantidad: seleccionCustom.cantidad.label,
+    papel:    seleccionCustom.papel.label,
+    adornos:  [...seleccionCustom.adornos],
+  };
+
+  const key = `custom_${++cartKeyCounter}`;
+  cart[key] = {
+    key,
+    configKey: key,
+    productoId: 'custom',
+    nombre,
+    emoji,
+    precioBase: precio,
+    papel: { label: seleccionCustom.papel.label, emoji: '📦', extra: 0 },
+    adornos: seleccionCustom.adornos.map(a => ({ ...a, emoji: '' })),
+    extraTotal: 0,
+    qty: 1,
+    esPersonalizado: true,
+    detalles,
+  };
+
+  updateFab();
+
+  const btn = document.querySelector('.btn-custom-add');
+  btn.textContent = '✓ ¡Agregado al pedido!';
+  setTimeout(() => btn.textContent = '🌹 Agregar al pedido', 1800);
+  openCart();
+}
+
+renderGrid();
+createPetals();
+actualizarPreview();
+</script>
+</body>
+</html>
